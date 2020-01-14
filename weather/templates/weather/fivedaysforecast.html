@@ -1,0 +1,184 @@
+{% extends 'weather/theme.html' %}
+{% load static %}
+{% block globe %}
+
+
+<div class="main-card mb-3 card">
+    <div style="height:500px;"class="card-body">
+  
+    </div>
+  
+  </div>
+  
+  
+  <div class="main-card mb-3 card">
+    <div class="card-body"><h5 class="card-title">Co-ordinates</h5>
+        <form class="" method="POST" action="#">
+          {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-4">
+                    <div class="position-relative form-group"><label for="exampleEmail11" class="">Latitude</label><input name="latitude" id="exampleEmail11" placeholder="Latitude" type="text" class="form-control" required></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="position-relative form-group"><label for="examplePassword11" class="">Longitude</label><input name="longitude" id="examplePassword11" placeholder="Longitude" type="text" class="form-control" required></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="position-relative form-group"><label for="examplePassword11" class="">Day</label><input name="day" id="examplePassword11" placeholder="Day" type="number" class="form-control" required></div>
+            </div>
+           
+            <button class="mt-2 btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+  </div> 
+</div>
+
+  <hr>
+  
+{% if dictionary %}
+<center>
+
+    <div style="width:500px;" class="main-card mb-3 card">
+        <div  class="card-body"><h1 >{{hours}}th Day Forecast</h1>
+            </div>
+      </div>
+</center>
+<hr>
+<div class="row">
+  <div class="col-lg-6 col-xl-6">
+      <div class="card mb-3 widget-content bg-night-fade">
+          <div class="widget-content-wrapper text-white">
+              <div class="widget-content-left">
+                  <div class="widget-heading">City name</div>
+                  <div class="widget-subheading"></div>
+              </div>
+              <div class="widget-content-right">
+                  <div class="widget-numbers text-white"><span>{{ dictionary1.city_name}}</span></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-6 col-xl-6">
+      <div class="card mb-3 widget-content bg-arielle-smile">
+          <div class="widget-content-wrapper text-white">
+              <div class="widget-content-left">
+                  <div class="widget-heading">TimeZone</div>
+                  <div class="widget-subheading"></div>
+              </div>
+              <div class="widget-content-right">
+                  <div class="widget-numbers text-white"><span>{{ dictionary1.timezone }}</span></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-6 col-xl-6">
+      <div class="card mb-3 widget-content bg-premium-dark">
+          <div class="widget-content-wrapper text-white">
+              <div class="widget-content-left">
+                  <div class="widget-heading">Weather</div>
+                  <div class="widget-subheading"></div>
+              </div>
+              <div class="widget-content-right">
+                  <div class="widget-numbers text-warning"><span>{{ dictionary.weather }}</span></div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+ 
+  
+  
+
+  <div class="col-lg-6 col-xl-6">
+      <div class="card mb-3 widget-content">
+          <div class="widget-content-wrapper">
+              <div class="widget-content-left">
+                  <div class="widget-heading">Temprature</div>
+                  <div class="widget-subheading"></div>
+              </div>
+              <div class="widget-content-right">
+                  <div class="widget-numbers text-success"><span>{{ dictionary.temprature }} C</span></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-6 col-xl-6">
+      <div class="card mb-3 widget-content">
+          <div class="widget-content-wrapper">
+              <div class="widget-content-left">
+                  <div class="widget-heading">Pressure</div>
+                  <div class="widget-subheading"></div>
+              </div>
+              <div class="widget-content-right">
+                  <div class="widget-numbers text-primary"><span>{{ dictionary.pressure }} bar</span></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-6 col-xl-6">
+      <div class="card mb-3 widget-content">
+          <div class="widget-content-wrapper">
+              <div class="widget-content-left">
+                  <div class="widget-heading">Ozone</div>
+                  <div class="widget-subheading"></div>
+              </div>
+              <div class="widget-content-right">
+                  <div class="widget-numbers text-warning"><span>{{ dictionary.ozone }}</span></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+<div class="col-lg-6 col-xl-6">
+    <div class="card mb-3 widget-content bg-arielle-smile">
+        <div class="widget-content-wrapper text-white">
+            <div class="widget-content-left">
+                <div class="widget-heading">Wind Speed</div>
+                <div class="widget-subheading"></div>
+            </div>
+            <div class="widget-content-right">
+                <div class="widget-numbers text-white"><span>{{ dictionary.wind_speed }} km/hr</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6 col-xl-6">
+    <div class="card mb-3 widget-content bg-premium-dark">
+        <div class="widget-content-wrapper text-white">
+            <div class="widget-content-left">
+                <div class="widget-heading">Wind Direction</div>
+                <div class="widget-subheading"></div>
+            </div>
+            <div class="widget-content-right">
+                <div class="widget-numbers text-warning"><span>{{ dictionary.wind_dir }}</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6 col-xl-6">
+  <div class="card mb-3 widget-content bg-premium-dark">
+      <div class="widget-content-wrapper text-white">
+          <div class="widget-content-left">
+              <div class="widget-heading">Dew Point</div>
+              <div class="widget-subheading"></div>
+          </div>
+          <div class="widget-content-right">
+              <div class="widget-numbers text-warning"><span>{{ dictionary.dew_point }}</span></div>
+          </div>
+      </div>
+  </div>
+</div>
+
+</div>
+
+
+
+{% else %}
+{% if message or message2 %}
+<div class="main-card mb-3 card">
+  <div class="card-body"><h5 class="card-title">Message</h5>
+      <p>{{message}}{{message1}}</p></div>
+</div>
+{% endif %}
+{% endif %}
+
+{% endblock %}
