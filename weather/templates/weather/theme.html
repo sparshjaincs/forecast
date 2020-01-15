@@ -12,14 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
+    
+    {% block css %}
+    {% endblock%}
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="{% static 'themes/main.css' %}" rel="stylesheet"><style type="text/css">/* Chart.js */
-@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
 <body>
+    
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <h3 style="letter-spacing: 6px;">FORECAST</h3>
+                
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -98,17 +104,13 @@
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        Alina Mclourd
+                                        Sparsh
                                     </div>
                                     <div class="widget-subheading">
-                                        VP People Manager
+                                        Tanu's Bestii
                                     </div>
                                 </div>
-                                <div class="widget-content-right header-user-info ml-3">
-                                    <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                                        <i class="fa text-white fa-calendar pr-1 pl-1"></i>
-                                    </button>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>        </div>
@@ -296,6 +298,7 @@
                 
                 <div class="app-main__outer">
                     <div class="app-main__inner">
+                       
                         {% block globe %}
                         {% endblock %}
                     </div>
@@ -306,4 +309,9 @@
     </div>
 <script type="text/javascript" src="{% static 'themes/assets/scripts/main.js' %}"></script>
 
-<div class="jvectormap-tip"></div></body></html>
+
+  {% block script %}
+  {% endblock %}
+<div class="jvectormap-tip"></div>
+</body>
+</html>

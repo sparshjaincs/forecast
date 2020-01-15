@@ -1,10 +1,44 @@
 {% extends 'weather/theme.html' %}
 {% load static%}
+{% block script %}
+
+<script src="http://www.webglearth.com/v2/api.js"></script>
+<script>
+    var earth;
+    function initialize() {
+        var options = {atmosphere: true, sky: true,center: [0, 0]};
+      earth = new WE.map('earth_div',options);
+      earth.setView([46.8011, 8.2266], 2);
+      WE.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=kMy7AaH4swZ0Sd7BIcFm',{
+        minZoom: 0,
+        maxZoom: 5,
+        attribution: 'NASA'
+      }).addTo(earth);
+      earth.on('click', function(e) {
+          document.getElementById('lat').value = e.latlng.lat;
+          document.getElementById('lon').value = e.latlng.lng;
+        });
+
+
+      // Start a simple rotation animation
+     
+    }
+    window.onload = initialize;
+  </script>
+{% endblock %}
+
+{% block css %}
+
+<style>
+ 
+    #earth_div{ top: 0; right: 0; bottom: 0; left: 0; position: absolute !important;}
+  </style>  
+{% endblock %}
 {% block globe %}
 <!--  maps --->
 <div class="main-card mb-3 card">
-  <div style="height:500px;"class="card-body">
-
+  <div style="height:500px;padding:0px;background-color:black;"class="card-body">
+    <div id="earth_div"></div>
   </div>
 
 </div>
@@ -16,10 +50,10 @@
         {% csrf_token %}
           <div class="form-row">
               <div class="col-md-6">
-                  <div class="position-relative form-group"><label for="exampleEmail11" class="">Latitude</label><input name="latitude" id="exampleEmail11" placeholder="Latitude" type="text" class="form-control" required></div>
+                  <div class="position-relative form-group"><label for="exampleEmail11" class="">Latitude</label><input name="latitude" id="lat" placeholder="Latitude" type="text" class="form-control" required></div>
               </div>
               <div class="col-md-6">
-                  <div class="position-relative form-group"><label for="examplePassword11" class="">Longitude</label><input name="longitude" id="examplePassword11" placeholder="Longitude" type="text" class="form-control" required></div>
+                  <div class="position-relative form-group"><label for="examplePassword11" class="">Longitude</label><input name="longitude" id="lon" placeholder="Longitude" type="text" class="form-control" required></div>
               </div>
           </div>
          

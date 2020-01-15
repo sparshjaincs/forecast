@@ -1,6 +1,15 @@
 from django.shortcuts import render
 import requests
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.views import PasswordResetView
 # Create your views here.
+class MyPasswordResetView(UserPassesTestMixin, PasswordResetView):
+    template_name = 'users/password_reset.html'
+
+    # https://docs.djangoproject.com/en/2.2/ref/contrib/auth/#django.contrib.auth.models.User.is_anonymous
+    def test_func(self):
+        return self.request.user.is_anonymous
+
 def homepage(request):
     context = {}
     url = "https://weatherbit-v1-mashape.p.rapidapi.com/current"
